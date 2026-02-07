@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // ← add this
+import { useNavigate } from "react-router-dom";
 import styles from "./PodcastDetail.module.css";
 import { formatDate } from "../../utils/formatDate";
 import GenreTags from "../UI/GenreTags";
@@ -7,7 +7,18 @@ import GenreTags from "../UI/GenreTags";
 export default function PodcastDetail({ podcast, genres }) {
   const [selectedSeasonIndex, setSelectedSeasonIndex] = useState(0);
   const season = podcast.seasons[selectedSeasonIndex];
-  const navigate = useNavigate(); // ← hook for navigation
+  const navigate = useNavigate();
+
+  // Favorites state
+  const [favorites, setFavorites] = useState({});
+
+  // Toggle favorite
+  const toggleFavorite = (index) => {
+    setFavorites((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
+  };
 
   return (
     <div className={styles.container}>
@@ -45,7 +56,7 @@ export default function PodcastDetail({ podcast, genres }) {
                 <strong>
                   {podcast.seasons.reduce(
                     (acc, s) => acc + s.episodes.length,
-                    0
+                    0,
                   )}{" "}
                   Episodes
                 </strong>
@@ -85,7 +96,11 @@ export default function PodcastDetail({ podcast, genres }) {
 
         <div className={styles.episodeList}>
           {season.episodes.map((ep, index) => (
-            <div key={index} className={styles.episodeCard}>
+            <div
+              key={index}
+              className={styles.episodeCard}
+              style={{ position: "relative" }} // necessary for heart positioning
+            >
               <img className={styles.episodeCover} src={season.image} alt="" />
               <div className={styles.episodeInfo}>
                 <p className={styles.episodeTitle}>
@@ -93,6 +108,24 @@ export default function PodcastDetail({ podcast, genres }) {
                 </p>
                 <p className={styles.episodeDesc}>{ep.description}</p>
               </div>
+
+              {/* Heart button per episode */}
+              <button
+                onClick={() => toggleFavorite(index)}
+                style={{
+                  position: "absolute",
+                  top: "8px",
+                  right: "8px",
+                  background: "transparent",
+                  border: "none",
+                  cursor: "pointer",
+                  fontSize: "1.5rem",
+                  color: favorites[index] ? "red" : "#ccc",
+                  transition: "transform 0.2s",
+                }}
+              >
+                {favorites[index] ? "❤️" : "🤍"}
+              </button>
             </div>
           ))}
         </div>
