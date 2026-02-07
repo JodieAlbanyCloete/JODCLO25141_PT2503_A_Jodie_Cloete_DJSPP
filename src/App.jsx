@@ -3,6 +3,7 @@ import Header from "./components/UI/Header";
 import Home from "./pages/Home";
 import ShowDetail from "./pages/ShowDetail";
 import { PodcastProvider } from "./context/PodcastContext";
+import RecommendedPage from "./pages/RecommendedPage";
 
 /**
  * Root component of the Podcast Explorer app.
@@ -18,11 +19,13 @@ import { PodcastProvider } from "./context/PodcastContext";
 export default function App() {
   return (
     <>
-      <Header />
       <PodcastProvider>
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path={`/show/:id`} element={<ShowDetail />} />
+          <Route path="/recommended" element={<RecommendedPage />} />
+          {/* <Route path="/favourites" element={<FavouritesPage />} /> */}
         </Routes>
       </PodcastProvider>
     </>

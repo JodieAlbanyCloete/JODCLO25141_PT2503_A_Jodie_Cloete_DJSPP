@@ -10,6 +10,13 @@
  * @returns {Promise<void>} A promise that resolves when the fetch process completes.
  *
  **/
+
+console.log("fetchPata.js loaded");
+console.log(
+  "fetchRecommendedPodcasts exists:",
+  typeof fetchRecommendedPodcasts,
+);
+
 export async function fetchPodcasts(setPodcasts, setError, setLoading) {
   try {
     const res = await fetch("https://podcast-api.netlify.app");
@@ -32,6 +39,30 @@ export async function fetchSinglePodcast(id, setPodcast, setError, setLoading) {
     setPodcast(data);
   } catch (err) {
     console.error("Failed to fetch podcasts:", err);
+    setError(err.message);
+  } finally {
+    setLoading(false);
+  }
+}
+
+export async function fetchRecommendedPodcasts(
+  setRecommended,
+  setError,
+  setLoading,
+) {
+  try {
+    const res = await fetch("https://podcast-api.netlify.app");
+    if (!res.ok) throw new Error(`${res.status}`);
+
+    const data = await res.json();
+
+    // Example recommendation logic:
+    // Top 10 shows OR filter by rating if your API provides it
+    const recommended = data.slice(0, 10); // or data.filter(show => show.rating >= 4.5);
+
+    setRecommended(recommended);
+  } catch (err) {
+    console.error("Failed to fetch recommended podcasts:", err);
     setError(err.message);
   } finally {
     setLoading(false);
