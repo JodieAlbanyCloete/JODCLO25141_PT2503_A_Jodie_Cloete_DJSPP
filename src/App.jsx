@@ -33,7 +33,10 @@ export default function App() {
           </Routes>
 
           {/* Global Audio Player */}
-          <GlobalAudioPlayer />
+          <GlobalAudioPlayer
+            src="https://podcast-api.netlify.app/placeholder-audio.mp3"
+            title="Sample Podcast Episode"
+          />
         </PodcastProvider>
       </FavouritesProvider>
     </>

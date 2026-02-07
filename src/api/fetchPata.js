@@ -72,17 +72,11 @@ export async function fetchRecommendedPodcasts(
 
 export async function fetchPodcastAudio(id) {
   try {
-    const res = await fetch(
-      `https://podcast-api.netlify.app/placeholder-audio.mp3`,
-    );
-    if (!res.ok) throw new Error(`HTTP error ${res.status}`);
-    const data = await res.json();
+    // For now, the placeholder audio is static
+    const audioUrl = "https://podcast-api.netlify.app/placeholder-audio.mp3";
+    const title = "Sample Episode";
 
-    // Return only the audio and title
-    return {
-      audio: data.audio,
-      title: data.title,
-    };
+    return { audio: audioUrl, title };
   } catch (err) {
     console.error("Failed to fetch podcast audio:", err);
     throw err;
