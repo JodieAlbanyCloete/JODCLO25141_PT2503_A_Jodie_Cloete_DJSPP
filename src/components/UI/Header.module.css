@@ -10,3 +10,12 @@
   text-decoration: none;
   color: black;
 }
+
+[data-theme="dark"] .appHeader {
+  background-color: #1f1f1f; /* Dark header background */
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); /* Slightly stronger shadow */
+}
+
+[data-theme="dark"] .appHeader a {
+  color: #f0f0f0; /* Light text for links */
+}
