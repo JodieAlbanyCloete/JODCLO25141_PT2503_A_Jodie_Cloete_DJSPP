@@ -11,3 +11,19 @@
   display: inline-block;
   font-size: 0.8rem;
 }
+
+[data-theme="dark"] .tags {
+  background-color: #e2d7d7; /* dark container */
+  padding: 0.5rem;
+  border-radius: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Dark mode for individual tags inside the container */
+[data-theme="dark"] .tag {
+  background-color: #f3eeee; /* slightly lighter than container */
+  color: #080808; /* readable text */
+  font-weight: bold;
+}

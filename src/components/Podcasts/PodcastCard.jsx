@@ -31,7 +31,7 @@ export default function PodcastCard({ podcast }) {
 
       <h3>{podcast.title}</h3>
       <p className={styles.seasons}>{podcast.seasons} seasons</p>
-      <GenreTags genres={podcast.genres} />
+      <GenreTags className="tag" genres={podcast.genres} />
       <p className={styles.updatedText}>
         Updated {formatDate(podcast.updated)}
       </p>

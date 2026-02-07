@@ -31,7 +31,7 @@
 }
 
 .tag {
-  background: #eee;
+  background: #5a155a;
   padding: 0.3rem 0.6rem;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
@@ -52,15 +52,25 @@
 }
 
 [data-theme="dark"] .card h3 {
-  color: #f0f0f0;
+  color: #eff5f0;
 }
 
 [data-theme="dark"] .card p,
 [data-theme="dark"] .updatedText {
-  color: #ccc; /* lighter grey for readability */
+  color: #faf6f6; /* lighter grey for readability */
 }
 
-[data-theme="dark"] .tags .tag {
-  background: #333;
-  color: #f0f0f0;
+:global([data-theme="dark"]) .tags {
+  background-color: #bd1717; /* dark container */
+  padding: 0.5rem;
+  border-radius: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Dark mode for individual tags inside the container */
+:global([data-theme="dark"]) .tag {
+  background-color: #7c0b0b; /* slightly lighter than container */
+  color: #080606; /* readable text */
 }
