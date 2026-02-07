@@ -6,6 +6,7 @@ import { PodcastProvider } from "./context/PodcastContext";
 import RecommendedPage from "./pages/RecommendedPage";
 import { FavouritesProvider } from "./context/FavouritesContext";
 import Favourites from "./pages/Favourites";
+import GlobalAudioPlayer from "./components/UI/GlobalAudioPlayer";
 
 /**
  * Root component of the Podcast Explorer app.
@@ -30,6 +31,9 @@ export default function App() {
             <Route path="/recommended" element={<RecommendedPage />} />
             <Route path="/favourites" element={<Favourites />} />
           </Routes>
+
+          {/* Global Audio Player */}
+          <GlobalAudioPlayer />
         </PodcastProvider>
       </FavouritesProvider>
     </>

@@ -7,6 +7,7 @@
  * @param {Function} setError - State setter function to update the error message (string).
  * @param {Function} setLoading - State setter function to toggle the loading state (boolean).
  *
+ *
  * @returns {Promise<void>} A promise that resolves when the fetch process completes.
  *
  **/
@@ -66,5 +67,24 @@ export async function fetchRecommendedPodcasts(
     setError(err.message);
   } finally {
     setLoading(false);
+  }
+}
+
+export async function fetchPodcastAudio(id) {
+  try {
+    const res = await fetch(
+      `https://podcast-api.netlify.app/placeholder-audio.mp3`,
+    );
+    if (!res.ok) throw new Error(`HTTP error ${res.status}`);
+    const data = await res.json();
+
+    // Return only the audio and title
+    return {
+      audio: data.audio,
+      title: data.title,
+    };
+  } catch (err) {
+    console.error("Failed to fetch podcast audio:", err);
+    throw err;
   }
 }
