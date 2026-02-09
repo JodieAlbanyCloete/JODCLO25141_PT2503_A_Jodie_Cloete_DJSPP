@@ -1,6 +1,7 @@
 import React from "react";
 import { useFavourites } from "../context/FavouritesContext";
 import FavouritePodcast from "../components/Podcasts/FavouritePodcasts";
+import SortSelect from "../components/Filters/SortSelect";
 
 export default function FavouritesPage() {
   const { favourites } = useFavourites();
@@ -12,6 +13,10 @@ export default function FavouritesPage() {
   return (
     <div style={{ padding: "1rem" }}>
       <h2>My Favourites</h2>
+      <h3> Your saved episodes from all shows</h3>
+
+      <SortSelect />
+
       {favourites.map((ep) => (
         <FavouritePodcast
           key={ep.id}
