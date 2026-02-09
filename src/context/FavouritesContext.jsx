@@ -16,13 +16,14 @@ export function FavouritesProvider({ children }) {
 
   const toggleFavourite = (podcast, season, episode) => {
     const favouriteEpisode = {
-      id: `${podcast.id}-${season.season}-${episode.episode}`,
+      id: `${podcast.id}-${season.title}-${episode.episode}`,
       title: episode.title,
       description: episode.description,
       file: episode.file,
       episodeNumber: episode.episode,
       seasonTitle: season.title,
       podcastTitle: podcast.title,
+      podcastImage: podcast.image,
     };
 
     setFavourites((prev) => {

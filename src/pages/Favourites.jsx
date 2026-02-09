@@ -17,7 +17,7 @@ export default function FavouritesPage() {
           key={ep.id}
           episode={ep}
           season={{ title: ep.seasonTitle }}
-          podcast={{ title: ep.podcastTitle }}
+          podcast={{ title: ep.podcastTitle, image: ep.podcastImage }}
         />
       ))}
     </div>

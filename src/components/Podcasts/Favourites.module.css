@@ -1,0 +1,78 @@
+.favouriteCard {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.favouriteCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.favouriteCardLeft {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.favouriteCardCover {
+  width: 80px;
+  height: 80px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background-color: #ccc;
+}
+
+.favouriteCardInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.favouriteCardInfo h4 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.favouriteCardInfo p {
+  margin: 0.25rem 0 0 0;
+  font-size: 0.875rem;
+  color: #555;
+}
+
+.favouriteCardInfo .meta {
+  color: #888;
+  font-size: 0.8rem;
+}
+
+.favouriteCardRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.playBtn {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.playBtn:hover {
+  background-color: #333;
+}
