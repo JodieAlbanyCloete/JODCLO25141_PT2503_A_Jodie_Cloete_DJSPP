@@ -23,21 +23,6 @@ body {
   font-family: sans-serif;
 }
 
-header {
-  background-color: red;
-  padding: 1rem;
-}
-
-/* Podcast card styling */
-.podcast-card {
-  background-color: red;
-  color: white;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  margin-bottom: 1rem;
-  transition: all 0.3s ease;
-}
-
 a {
   color: var(--primary-color);
   text-decoration: none;

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "./PodcastDetail.module.css";
 import { formatDate } from "../../utils/formatDate";
 import GenreTags from "../UI/GenreTags";
+import { useFavourites } from "../../context/FavouritesContext";
 
 export default function PodcastDetail({ podcast, genres }) {
   const [selectedSeasonIndex, setSelectedSeasonIndex] = useState(0);
@@ -10,15 +11,17 @@ export default function PodcastDetail({ podcast, genres }) {
   const navigate = useNavigate();
 
   // Favorites state
-  const [favorites, setFavorites] = useState({});
+  // const [favorites, setFavorites] = useState({});
 
-  // Toggle favorite
-  const toggleFavorite = (index) => {
-    setFavorites((prev) => ({
-      ...prev,
-      [index]: !prev[index],
-    }));
-  };
+  // // Toggle favorite
+  // const toggleFavorite = (index) => {
+  //   setFavorites((prev) => ({
+  //     ...prev,
+  //     [index]: !prev[index],
+  //   }));
+  // };
+
+  const { favourites, toggleFavourite } = useFavourites();
 
   return (
     <div className={styles.container}>
@@ -93,41 +96,49 @@ export default function PodcastDetail({ podcast, genres }) {
             ))}
           </select>
         </div>
-
         <div className={styles.episodeList}>
-          {season.episodes.map((ep, index) => (
-            <div
-              key={index}
-              className={styles.episodeCard}
-              style={{ position: "relative" }} // necessary for heart positioning
-            >
-              <img className={styles.episodeCover} src={season.image} alt="" />
-              <div className={styles.episodeInfo}>
-                <p className={styles.episodeTitle}>
-                  Episode {index + 1}: {ep.title}
-                </p>
-                <p className={styles.episodeDesc}>{ep.description}</p>
-              </div>
+          {season.episodes.map((ep) => {
+            const favId = `${podcast.id}-${season.season}-${ep.episode}`;
+            const isFavourite = favourites.some((f) => f.id === favId);
 
-              {/* Heart button per episode */}
-              <button
-                onClick={() => toggleFavorite(index)}
-                style={{
-                  position: "absolute",
-                  top: "8px",
-                  right: "8px",
-                  background: "transparent",
-                  border: "none",
-                  cursor: "pointer",
-                  fontSize: "1.5rem",
-                  color: favorites[index] ? "red" : "#ccc",
-                  transition: "transform 0.2s",
-                }}
+            return (
+              <div
+                key={favId}
+                className={styles.episodeCard}
+                style={{ position: "relative" }}
               >
-                {favorites[index] ? "❤️" : "🤍"}
-              </button>
-            </div>
-          ))}
+                <img
+                  className={styles.episodeCover}
+                  src={season.image}
+                  alt=""
+                />
+
+                <div className={styles.episodeInfo}>
+                  <p className={styles.episodeTitle}>
+                    Episode {ep.episode}: {ep.title}
+                  </p>
+                  <p className={styles.episodeDesc}>{ep.description}</p>
+                </div>
+
+                <button
+                  onClick={() => toggleFavourite(podcast, season, ep)}
+                  style={{
+                    position: "absolute",
+                    top: "8px",
+                    right: "8px",
+                    background: "transparent",
+                    border: "none",
+                    cursor: "pointer",
+                    fontSize: "1.5rem",
+                    color: isFavourite ? "red" : "#ccc",
+                    transition: "transform 0.2s",
+                  }}
+                >
+                  {isFavourite ? "❤️" : "🤍"}
+                </button>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
