@@ -11,6 +11,38 @@
   color: black;
 }
 
+.iconButton,
+.themeToggle {
+  display: inline-flex; /* make buttons flexible */
+  justify-content: center;
+  align-items: center;
+  padding: 0.75rem 1rem; /* bigger click area */
+  font-size: 1.5rem; /* bigger emoji/icon */
+  border: none;
+  border-radius: 12px; /* rounded edges */
+  background-color: var(--button-bg, #eee);
+  color: var(--button-color, #333);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none; /* remove link underline */
+  gap: 2rem;
+}
+
+.iconButton:hover,
+.themeToggle:hover {
+  background-color: var(--button-hover-bg, #ddd);
+  transform: scale(1.1);
+}
+
+.iconButton:active,
+.themeToggle:active {
+  transform: scale(0.95);
+}
+
+.themeToggle {
+  font-size: 1.8rem; /* slightly bigger for visibility */
+}
+
 [data-theme="dark"] .appHeader {
   background-color: #1f1f1f; /* Dark header background */
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5); /* Slightly stronger shadow */
