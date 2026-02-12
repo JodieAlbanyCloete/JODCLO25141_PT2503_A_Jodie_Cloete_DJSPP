@@ -10,17 +10,6 @@ export default function PodcastDetail({ podcast, genres }) {
   const season = podcast.seasons[selectedSeasonIndex];
   const navigate = useNavigate();
 
-  // Favorites state
-  // const [favorites, setFavorites] = useState({});
-
-  // // Toggle favorite
-  // const toggleFavorite = (index) => {
-  //   setFavorites((prev) => ({
-  //     ...prev,
-  //     [index]: !prev[index],
-  //   }));
-  // };
-
   const { favourites, toggleFavourite } = useFavourites();
 
   return (
@@ -98,7 +87,7 @@ export default function PodcastDetail({ podcast, genres }) {
         </div>
         <div className={styles.episodeList}>
           {season.episodes.map((ep) => {
-            const favId = `${podcast.id}-${season.season}-${ep.episode}`;
+            const favId = `${podcast.id}-${season.title}-${ep.episode}`;
             const isFavourite = favourites.some((f) => f.id === favId);
 
             return (
