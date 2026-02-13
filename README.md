@@ -154,5 +154,5 @@ Tracks:
 
 🚀 **Vercel Link**
 
-https://react-podcast-app-orpin.vercel.app/favourites
+https://react-podcast-app-orpin.vercel.app
 
