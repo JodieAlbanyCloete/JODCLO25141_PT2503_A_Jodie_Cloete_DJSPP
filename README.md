@@ -119,6 +119,7 @@ favicon.png – App favicon.
 
 
 🧠 **How It Works**
+
 🔹 Favourites System
 
 - Uses React Context API.
