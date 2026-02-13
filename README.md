@@ -142,7 +142,7 @@ Tracks:
 - Volume
 - Remains consistent across page navigation.
 
-📌 Future Improvements
+📌 **Future Improvements**
 
 🔐 User authentication
 
