@@ -1,94 +1,126 @@
-# DJS05 – React Podcast App with Routing, Detail Pages, and Context State
+🎧 **Podcast App**
 
-This project is a **React-based podcast explorer** that builds upon DJS04 by adding **multi-page routing**, **podcast detail views**, and further improving the use of shared context state and component organization.
+A modern React podcast application that allows users to browse, explore, favourite, and play podcasts. The app includes light/dark theme support, a global audio player, sorting and filtering, and a favourites management system.
 
-## Key Features
+🚀 **Features**
 
-- **Routing (React Router DOM)**  
-  Uses `react-router-dom` for navigation between pages:
+🎙️ Browse podcasts from an external API
+🔎 View detailed podcast information (seasons & episodes)
+❤️ Add and remove episodes from favourites
+📁 Dedicated Favourites page
+🌙 Light/Dark theme toggle
+🔊 Global audio player with:
+- Play / Pause
+- Progress tracking
+- Volume control
+ - Mute Toggle
+📅 Formatted episode release dates
+🔁 Sorting and filtering functionality
+👍 Recommended podcasts page
 
-  - `/` – Home page with search, filters, sorting, and pagination
-  - `/show/:id` – Detailed view of a selected podcast, including episode listing
+🛠️ **Built With**
 
-- **Podcast Context (Global State)**  
-  Provides shared state using `PodcastContext`:
+React
+React Router
+Context API (Favourites + Theme management)
+CSS Modules
+Fetch API
+External Podcast API:
+https://podcast-api.netlify.app
 
-  - Manages full podcast dataset, filters, search, sort, pagination
-  - Makes data accessible across pages
+⚙️ Installation & Setup
+- Clone DJS05 Solution repo
+- npm install
+- npm install react-router-dom
+- npm run dev
 
-- **Search**
-
-  - Case-insensitive search by podcast title
-  - Updates results dynamically
-
-- **Sort Options**
-
-  - Default
-  - Newest
-  - Oldest
-  - Title A → Z
-  - Title Z → A
-
-- **Genre Filter**
-
-  - Filters podcasts by genre
-  - Genre data loaded from static source
-
-- **Pagination**
-
-  - Dynamic per-page item calculation based on screen size
-  - Defaults to 10 per page on smaller screens
-
-- **Detail View**
-  - Fetches full podcast data when visiting `/show/:id`
-  - Displays title, image, description, genre tags, and seasons
-
-## Project Structure
-
-```
-/src
+📂 Project Structure
+src/
 │
-├── /api
-│ └── fetchPata.js # Fetch podcasts and single podcast
+├── api/
+│   └── fetchPata.js
 │
-├── /components
-│ ├── Filters/ # SearchBar, SortSelect, GenreFilter
-│ ├── Podcasts/ # PodcastCard, PodcastGrid, PodcastDetail
-│ └── UI/ # Header, Pagination, Loading, Error, GenreTags
+├── components/
 │
-├── /context
-│ └── PodcastContext.jsx # Context provider for global state
-|
-├── /pages
-│ ├── Home.jsx # Home page with all podcasts and controls
-│ └── ShowDetail.jsx # Detail view for a selected podcast
+│   ├── Filters/
+│   │   ├── GenreFilter.jsx
+│   │   ├── GenreFilter.module.css
+│   │   ├── SearchBar.jsx
+│   │   ├── SearchBar.module.css
+│   │   ├── SortSelect.jsx
+│   │   └── SortSelect.module.css
 │
-├── /styles
-│ └── \*.module.css # CSS Modules used throughout
+│   ├── Podcasts/
+│   │   ├── PodcastCard.jsx
+│   │   ├── PodcastCard.module.css
+│   │   ├── PodcastGrid.jsx
+│   │   ├── PodcastGrid.module.css
+│   │   ├── PodcastDetail.jsx
+│   │   ├── PodcastDetail.module.css
+│   │   ├── FavouritePodcast.jsx
+│   │   ├── Favourites.module.css
+│   │   └── RecommendedShows.jsx
 │
-├── App.jsx # Main app with routing
-└── main.jsx # React entry point
-└── data.js # Static genre ID to label mapping
-```
+│   └── UI/
+│       ├── Header.jsx
+│       ├── Header.module.css
+│       ├── GlobalAudioPlayer.jsx
+│       ├── GlobalAudioPlayer.module.css
+│       ├── GenreTags.jsx
+│       ├── GenreTags.module.css
+│       ├── Pagination.jsx
+│       ├── Pagination.module.css
+│       ├── Loading.jsx
+│       ├── Loading.module.css
+│       ├── Error.jsx
+│       └── Error.module.css
+│
+├── context/
+│   ├── PodcastContext.jsx
+│   ├── FavouritesContext.jsx
+│   └── ThemeContext.jsx
+│
+├── pages/
+│   ├── Home.jsx
+│   ├── Favourites.jsx
+│   ├── RecommendedPage.jsx
+│   └── ShowDetail.jsx
+│
+├── utils/
+│   └── formatDate.js
+│
+├── App.jsx
+├── main.jsx
+├── index.css
+├── data.js
+└── favicon.png
 
-## How It Works
+🧠 **How It Works**
+🔹 Favourites System
 
-- On initial load, all podcast data is fetched once via `PodcastProvider`.
-- Components like `SearchBar`, `GenreFilter`, and `SortSelect` update shared context state.
-- Filtered and sorted results are paginated and displayed in `PodcastGrid`.
-- When a podcast card is clicked, the app navigates to `/show/:id`, fetching full podcast details.
+Uses React Context API.
+Episodes are stored with a unique ID:
+podcast.id + season.title + episode.episode
+Users can add/remove episodes from anywhere in the app.
 
-## How to Run
+🔹 Theme Toggle
+Global theme state is managed via ThemeContext.
+Applies dark/light CSS classes to the root container.
+Persisted using localStorage (if implemented).
 
-1. Clone the repo or download the project files.
-2. Install dependencies:
+🔹 Global Audio Player
+Controlled via useRef
 
-   ```bash
-   npm install
-   ```
+Tracks:
+Playback state
+Progress
+Duration
+Volume
+Remains consistent across page navigation.
 
-3. Start the development server:
-   ```
-    npm run dev
-   ```
-4. Visit http://localhost:5173 in your browser.
+📌 Future Improvements
+
+🔐 User authentication
+💾 Persist favourites to a database
+📱 Improved mobile responsiveness
+🎨 UI refinements & animations
