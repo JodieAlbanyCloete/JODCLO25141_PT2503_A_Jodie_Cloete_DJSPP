@@ -41,13 +41,13 @@ Fetch API
 External Podcast API:
 https://podcast-api.netlify.app
 
-⚙️ Installation & Setup
+⚙️ **Installation & Setup**
 - Clone DJS05 Solution repo
 - npm install
 - npm install react-router-dom
 - npm run dev
 
-📂 Project Structure
+📂 **Project Structure**
 🔹 src/
 
 The src folder contains all the main application code. Everything that runs the app lives inside this folder.
@@ -63,6 +63,7 @@ Separating API logic keeps data fetching clean and reusable across the app.
 🔹 components/
 
 This folder contains all reusable UI and feature components. It is divided into three main sections:
+
 1️⃣ Filters/
 
 Contains components responsible for filtering and sorting podcasts.
@@ -71,15 +72,15 @@ Contains components responsible for filtering and sorting podcasts.
 
 Contains podcast-specific components.
 
-PodcastCard.jsx – Displays a single podcast preview.
+- PodcastCard.jsx – Displays a single podcast preview.
 
-PodcastGrid.jsx – Displays a list/grid of podcasts.
+- PodcastGrid.jsx – Displays a list/grid of podcasts.
 
-PodcastDetail.jsx – Shows detailed information about a podcast, including seasons and episodes.
+- PodcastDetail.jsx – Shows detailed information about a podcast, including seasons and episodes.
 
-FavouritePodcast.jsx – Displays a favourited episode.
+- FavouritePodcast.jsx – Displays a favourited episode.
 
-RecommendedShows.jsx – Displays recommended podcasts.
+- RecommendedShows.jsx – Displays recommended podcasts.
 
 These components are responsible for rendering podcast content.
 
