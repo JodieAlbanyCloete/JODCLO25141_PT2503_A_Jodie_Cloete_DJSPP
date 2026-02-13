@@ -48,114 +48,73 @@ https://podcast-api.netlify.app
 - npm run dev
 
 📂 Project Structure
-src/
+🔹 src/
 
-│
+The src folder contains all the main application code. Everything that runs the app lives inside this folder.
 
-├── api/
+🔹 api/
 
-│   └── fetchPata.js
+This folder contains files responsible for fetching data from the external podcast API.
 
-│
+fetchPata.js handles API requests.
 
-├── components/
+Separating API logic keeps data fetching clean and reusable across the app.
 
-│
-│   ├── Filters/
+🔹 components/
 
-│   │   ├── GenreFilter.jsx
+This folder contains all reusable UI and feature components. It is divided into three main sections:
+1️⃣ Filters/
 
-│   │   ├── GenreFilter.module.css
+Contains components responsible for filtering and sorting podcasts.
 
-│   │   ├── SearchBar.jsx
+2️⃣ Podcasts/
 
-│   │   ├── SearchBar.module.css
+Contains podcast-specific components.
 
-│   │   ├── SortSelect.jsx
+PodcastCard.jsx – Displays a single podcast preview.
 
-│   │   └── SortSelect.module.css
+PodcastGrid.jsx – Displays a list/grid of podcasts.
 
+PodcastDetail.jsx – Shows detailed information about a podcast, including seasons and episodes.
 
-│
-│   ├── Podcasts/
-│   │   ├── PodcastCard.jsx
+FavouritePodcast.jsx – Displays a favourited episode.
 
-│   │   ├── PodcastCard.module.css
+RecommendedShows.jsx – Displays recommended podcasts.
 
-│   │   ├── PodcastGrid.jsx
+These components are responsible for rendering podcast content.
 
-│   │   ├── PodcastGrid.module.css
+3️⃣ UI/
 
-│   │   ├── PodcastDetail.jsx
+Contains reusable interface components used across multiple pages.
 
-│   │   ├── PodcastDetail.module.css
+🔹 pages/
 
-│   │   ├── FavouritePodcast.jsx
+Contains top-level page components used by React Router.
 
-│   │   ├── Favourites.module.css
+Home.jsx – Main landing page showing podcasts.
 
-│   │   └── RecommendedShows.jsx
+Favourites.jsx – Displays saved favourite episodes.
 
+RecommendedPage.jsx – Displays recommended shows.
 
-│
-│   └── UI/
+ShowDetail.jsx – Displays full podcast details.
 
-│       ├── Header.jsx
+🔹 utils/
 
-│       ├── Header.module.css
+Contains helper functions.
 
-│       ├── GlobalAudioPlayer.jsx
+formatDate.js – Formats episode release dates.
 
-│       ├── GlobalAudioPlayer.module.css
+🔹 Root Files
 
-│       ├── GenreTags.jsx
+App.jsx – Main application component. Handles routing and layout structure.
 
-│       ├── GenreTags.module.css
+main.jsx – Entry point that renders the app to the DOM.
 
-│       ├── Pagination.jsx
+index.css – Global styles.
 
-│       ├── Pagination.module.css
+favicon.png – App favicon.
 
-│       ├── Loading.jsx
-
-│       ├── Loading.module.css
-
-│       ├── Error.jsx
-
-│       └── Error.module.css
-
-│
-├── context/
-│   ├── PodcastContext.jsx
-
-│   ├── FavouritesContext.jsx
-
-│   └── ThemeContext.jsx
-
-│
-├── pages/
-
-│   ├── Home.jsx
-
-│   ├── Favourites.jsx
-
-│   ├── RecommendedPage.jsx
-
-│   └── ShowDetail.jsx
-│
-├── utils/
-
-│   └── formatDate.js
-│
-├── App.jsx
-
-├── main.jsx
-
-├── index.css
-
-├── data.js
-
-└── favicon.png
 
 
 🧠 **How It Works**
