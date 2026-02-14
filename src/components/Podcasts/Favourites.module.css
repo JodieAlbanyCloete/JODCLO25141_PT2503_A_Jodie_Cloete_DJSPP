@@ -65,7 +65,7 @@
 
 .playBtn {
   background-color: #000;
-  color: #fff;
+  color: #e4e01a;
   border: none;
   padding: 0.25rem 0.75rem;
   border-radius: 6px;
@@ -74,7 +74,7 @@
 }
 
 .playBtn:hover {
-  background-color: #333;
+  background-color: #b3a707;
 }
 
 [data-theme="dark"] .favouriteCard {
