@@ -6,7 +6,7 @@
   border: 1px solid #ddd;
   border-radius: 10px;
   margin-bottom: 1rem;
-  background-color: #fff;
+  background-color: #fcfbfb;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   transition:
     transform 0.2s,
@@ -75,4 +75,17 @@
 
 .playBtn:hover {
   background-color: #333;
+}
+
+[data-theme="dark"] .favouriteCard {
+  background-color: #7e7a7a; /* Dark card background */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5); /* stronger shadow for dark mode */
+}
+
+[data-theme="dark"] .favouriteCardInfo h4 {
+  color: #fcfcfc;
+}
+
+[data-theme="dark"] .favouriteCardInfo p {
+  color: #ffffff;
 }
